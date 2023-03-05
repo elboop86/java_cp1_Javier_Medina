@@ -2,40 +2,28 @@ package com.example;
 
 import com.example.entities.Author;
 import com.example.entities.Book;
+import com.example.entities.BookBuilder;
 import com.example.repository.AuthorRepository;
 import com.example.repository.BookRepository;
-import jakarta.persistence.ManyToOne;
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.ConfigurableApplicationContext;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.List;
 
 @SpringBootApplication
 public class App {
-    static ApplicationContext context;
 
-    public static void main(String[] args) { context = SpringApplication.run(App.class, args);
 
-    }
-    /**
-     * Many To One
-     * Many smartphones to One person
-	 */
-    @ManyToOne
-    private static void ManyToOne() {
+    public static void main(String[] args) {ApplicationContext context = SpringApplication.run(App.class, args);
+
 
         var bookRepo = context.getBean(BookRepository.class);
-
-
-        Book book1 = new Book(null,"HTML","Programacion",25);
-        Book book2 = new Book(null,"CSS","Diseño",30);
-        Book book3 = new Book(null,"JavaScript","Programacion",35);
-
-        bookRepo.saveAll(List.of(book1,book2,book3));
+        Book book1 = new BookBuilder().setO(null).setJavaScript("HTML").setProgramacion("Programacion").setI(25).createBook();
+        Book book2 = new BookBuilder().setO(null).setJavaScript("CSS").setProgramacion("Diseño").setI(30).createBook();
+        Book book3 = new BookBuilder().setO(null).setJavaScript("JavaScript").setProgramacion("Programacion").setI(35).createBook();
+        bookRepo.saveAll(List.of(book1, book2, book3));
 
 
         var authorRepo = context.getBean(AuthorRepository.class);
@@ -46,6 +34,6 @@ public class App {
 
     }
 
+    }
 
-}
 

@@ -1,12 +1,7 @@
 package com.example.service;
 
-import com.example.entities.Author;
 import com.example.entities.Book;
-import com.example.repository.AuthorRepository;
 import com.example.repository.BookRepository;
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.ManyToOne;
-import jdk.jfr.Category;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -21,39 +16,32 @@ public class BookServiceImpl implements BookService {
 
 
     @Override
-    public List<Book> findAll() { return bookRepository.findAll();}
+    public List<Long> findAll() { return bookRepository.findAll(); }
 
     @Override
-    public Optional<Book> findAllById(Long id) {
-        return bookRepository.findAllById(id);
+    public Optional<Book> findById(Long id) {
+        return bookRepository.findById(id);
     }
 
     @Override
-    public List<Book> findAllByNameBook(String nameBook) {
-        return bookRepository.findAllByNameBook( nameBook);
+    public List<Book> findByNameBook(String book) {
+        return bookRepository.findByNameBook(String book);
     }
-
-    @Override
-    public List<Book> findAllByCategory(String category) {
-        return null;
-    }
-
 
 
     @Override
-    public List<Book> findAllByIsbn(Double isbn) {
-        return bookRepository.findAllByIsbn("isbn" );
+    public List<Book> findAllByNumPagesBetween(Integer NumPagesBetween) {
+        return bookRepository.findAllByNumPagesBetween(NumPagesBetween);
     }
 
-    @Override
-    public List<Book> findAllByAuthor(Author author) {
-        return bookRepository.findAllByAuthor(author);
-    }
+
+
+
 
 
     @Override
     public Book save(Book book) {
-        return null;
+        return bookRepository.save(String book);
     }
 
     @Override

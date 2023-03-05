@@ -24,6 +24,7 @@ public class Book {
 
     private Long id;
     private String nameBook;
+    private Integer PagesBetween;
     @OneToOne
     private Category category;
 
