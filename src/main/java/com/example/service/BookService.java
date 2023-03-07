@@ -12,9 +12,9 @@ public interface BookService {
 
    List<Book> findByNameBook(String book);
 
-    List<Book> findAllByNumPagesBetween(Integer NumPagesBetween);
+    List<Book> findByNumPagesBetween(Integer NumPagesBetween);
 
-    Book save(Book book);
+    void save(String book);
 
     void deleteById(Long id);
 
